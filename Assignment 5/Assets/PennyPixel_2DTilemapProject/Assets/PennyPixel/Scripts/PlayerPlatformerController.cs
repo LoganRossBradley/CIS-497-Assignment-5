@@ -6,6 +6,7 @@ public class PlayerPlatformerController : PhysicsObject {
 
     public float maxSpeed = 7;
     public float jumpTakeOffSpeed = 7;
+    public ScoreManager sm;
 
     private SpriteRenderer spriteRenderer;
     private Animator animator;
@@ -19,38 +20,51 @@ public class PlayerPlatformerController : PhysicsObject {
 
     protected override void ComputeVelocity()
     {
-        Vector2 move = Vector2.zero;
-
-        move.x = Input.GetAxis ("Horizontal");
-
-        if (Input.GetButtonDown ("Jump") && grounded) {
-            velocity.y = jumpTakeOffSpeed;
-        } else if (Input.GetButtonUp ("Jump")) 
+        if(!sm.gameOver)
         {
-            if (velocity.y > 0) {
-                velocity.y = velocity.y * 0.5f;
-            }
-        }
-
-        if(move.x > 0.01f)
-        {
-            if(spriteRenderer.flipX == true)
+            if (transform.position.y < -8)
             {
-                spriteRenderer.flipX = false;
+                sm.gameOver = true;
+                sm.won = false;
             }
-        } 
-        else if (move.x < -0.01f)
-        {
-            if(spriteRenderer.flipX == false)
+
+            Vector2 move = Vector2.zero;
+
+            move.x = Input.GetAxis("Horizontal");
+
+            if (Input.GetButtonDown("Jump") && grounded)
             {
-                spriteRenderer.flipX = true;
+                velocity.y = jumpTakeOffSpeed;
             }
+            else if (Input.GetButtonUp("Jump"))
+            {
+                if (velocity.y > 0)
+                {
+                    velocity.y = velocity.y * 0.5f;
+                }
+            }
+
+            if (move.x > 0.01f)
+            {
+                if (spriteRenderer.flipX == true)
+                {
+                    spriteRenderer.flipX = false;
+                }
+            }
+            else if (move.x < -0.01f)
+            {
+                if (spriteRenderer.flipX == false)
+                {
+                    spriteRenderer.flipX = true;
+                }
+            }
+
+            animator.SetBool("grounded", grounded);
+            animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
+            animator.SetFloat("velocityY", velocity.y);
+
+            targetVelocity = move * maxSpeed;
         }
-
-        animator.SetBool ("grounded", grounded);
-        animator.SetFloat ("velocityX", Mathf.Abs (velocity.x) / maxSpeed);
-        animator.SetFloat("velocityY", velocity.y);
-
-        targetVelocity = move * maxSpeed;
+        
     }
 }

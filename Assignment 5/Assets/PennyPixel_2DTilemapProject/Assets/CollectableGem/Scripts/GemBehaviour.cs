@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,8 @@ public class GemBehaviour : MonoBehaviour
 	public GameObject gemVisuals;
 	public GameObject collectedParticleSystem;
 	public CircleCollider2D gemCollider2D;
+
+	public ScoreManager sm;
 
 	private float durationOfCollectedParticleSystem;
 
@@ -26,6 +29,7 @@ public class GemBehaviour : MonoBehaviour
 
 	void GemCollected()
 	{
+		sm.score++;
 		gemCollider2D.enabled = false;
 		gemVisuals.SetActive (false);
 		collectedParticleSystem.SetActive (true);
