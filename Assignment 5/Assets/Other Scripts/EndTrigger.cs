@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/*
+ * Logan Ross
+ * Assignment 5
+ * end of the level win trigger
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

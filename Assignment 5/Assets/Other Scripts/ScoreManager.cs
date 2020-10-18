@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/*
+ * Logan Ross
+ * Assignment 5
+ * Tracks score and if the game is over
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
