@@ -1,4 +1,11 @@
-﻿using System.Collections;
+﻿/*
+ * Logan Ross
+ * Assignment 5
+ * Shoots gun and damages enemys
+ */
+
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

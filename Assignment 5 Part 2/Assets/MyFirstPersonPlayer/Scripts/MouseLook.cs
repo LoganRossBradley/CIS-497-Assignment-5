@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/*
+ * Logan Ross
+ * Assignment 5
+ * tracks mouse movment for looking around
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 using TMPro;

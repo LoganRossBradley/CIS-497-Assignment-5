@@ -1,4 +1,12 @@
-﻿using System.Collections;
+﻿/*
+ * Logan Ross
+ * Assignment 5
+ * allows the player to move and jump
+ * also adds gravity
+ */
+
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
